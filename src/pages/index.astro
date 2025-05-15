@@ -1,0 +1,195 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FeaturedPostCard from '../components/FeaturedPostCard.astro';
+import ArtCard from '../components/ArtCard.astro';
+import NewsletterForm from '../components/NewsletterForm.astro';
+
+// Sample data for featured posts
+const featuredPosts = [
+  {
+    slug: 'creative-process',
+    title: 'Exploring the Creative Process Behind My Latest Work',
+    description: 'Dive into the mindset, tools, and techniques that went into creating my most recent project and discover practical tips you can apply to your own creative endeavors.',
+    image: 'https://images.pexels.com/photos/1181673/pexels-photo-1181673.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    date: '2025-04-15',
+    category: 'Creativity'
+  },
+  {
+    slug: 'design-inspiration',
+    title: 'Design Inspiration: Finding Beauty in Everyday Objects',
+    description: 'How the shapes, colors, and textures of everyday life can inspire breathtaking design concepts if you know how to look for them.',
+    image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    date: '2025-04-10',
+    category: 'Design'
+  },
+  {
+    slug: 'digital-art-techniques',
+    title: '5 Digital Art Techniques That Transformed My Work',
+    description: 'Specific digital art methods that elevated my artwork and how you can implement them regardless of your current skill level.',
+    image: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    date: '2025-04-05',
+    category: 'Art'
+  },
+  {
+    slug: 'visual-storytelling',
+    title: 'The Power of Visual Storytelling in Modern Media',
+    description: 'How visual narratives can communicate complex ideas more effectively than words alone in our increasingly visual digital environment.',
+    image: 'https://images.pexels.com/photos/3178744/pexels-photo-3178744.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    date: '2025-03-30',
+    category: 'Visual Storytelling'
+  },
+  {
+    slug: 'minimalist-approach',
+    title: 'Why Minimalism is More Than a Design Trend',
+    description: 'Exploring how minimalist principles can influence not just your design work but your creative process and even lifestyle.',
+    image: 'https://images.pexels.com/photos/2693212/pexels-photo-2693212.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    date: '2025-03-25',
+    category: 'Design'
+  },
+];
+
+// Sample data for featured artwork
+const featuredArtwork = [
+  {
+    slug: 'urban-dream',
+    title: 'Urban Dream',
+    description: 'A surreal cityscape blending architecture and nature.',
+    image: 'https://images.pexels.com/photos/1269968/pexels-photo-1269968.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    category: 'Digital Art'
+  },
+  {
+    slug: 'serenity',
+    title: 'Serenity',
+    description: 'Abstract composition exploring tranquility through color and form.',
+    image: 'https://images.pexels.com/photos/1585325/pexels-photo-1585325.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    category: 'Abstract'
+  },
+  {
+    slug: 'emotional-portrait',
+    title: 'Emotional Portrait',
+    description: 'Exploration of human emotion through expressive portraiture.',
+    image: 'https://images.pexels.com/photos/2832382/pexels-photo-2832382.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    category: 'Portrait'
+  }
+];
+---
+
+<Layout title="Modern Blog — Posts, Ideas & Art" description="A beautiful space for sharing creativity, inspiration, and artistic expression.">
+  <!-- Hero Section -->
+  <section class="relative py-20 md:py-32 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-r from-primary-50 to-secondary-50 dark:from-primary-950/50 dark:to-secondary-950/50"></div>
+    
+    <div class="container relative z-10">
+      <div class="max-w-3xl">
+        <h1 class="animate-slide-up font-bold tracking-tight text-5xl md:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600 dark:from-primary-400 dark:to-secondary-400">
+          A Space for Ideas, Creativity & Art
+        </h1>
+        
+        <p class="mt-6 text-xl text-gray-700 dark:text-gray-300 animate-slide-up [animation-delay:200ms]">
+          Welcome to my digital canvas where I share thoughts, creative processes, design inspiration, and artistic experiments.
+        </p>
+        
+        <div class="mt-8 flex flex-wrap gap-4 animate-slide-up [animation-delay:400ms]">
+          <a href="/blog" class="btn-primary">
+            Explore Blog
+          </a>
+          <a href="/art" class="btn-outline">
+            View Artwork
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Featured Posts Section -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <div class="flex justify-between items-end mb-10">
+        <div>
+          <h2 class="text-3xl font-bold">Featured Posts</h2>
+          <p class="mt-2 text-gray-600 dark:text-gray-400">The latest ideas and insights from my blog</p>
+        </div>
+        <a href="/blog" class="text-primary-600 dark:text-primary-400 font-medium flex items-center hover:underline">
+          View all posts
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 ml-1">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {featuredPosts.map((post, index) => (
+          index === 0 ? (
+            <FeaturedPostCard post={post} featured={true} />
+          ) : (
+            <FeaturedPostCard post={post} />
+          )
+        ))}
+      </div>
+    </div>
+  </section>
+  
+  <!-- Art Gallery Section -->
+  <section class="py-16 md:py-24 bg-gray-50 dark:bg-gray-900">
+    <div class="container">
+      <div class="flex justify-between items-end mb-10">
+        <div>
+          <h2 class="text-3xl font-bold">Featured Artwork</h2>
+          <p class="mt-2 text-gray-600 dark:text-gray-400">Explore my latest creative projects</p>
+        </div>
+        <a href="/art" class="text-primary-600 dark:text-primary-400 font-medium flex items-center hover:underline">
+          View gallery
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 ml-1">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+      </div>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {featuredArtwork.map(artwork => (
+          <ArtCard artwork={artwork} />
+        ))}
+      </div>
+    </div>
+  </section>
+  
+  <!-- About Section -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="space-y-6">
+          <h2 class="text-3xl font-bold">About Me</h2>
+          <p class="text-gray-600 dark:text-gray-400 text-lg">
+            Hi, I'm a creative professional passionate about design, art, and storytelling. This blog is my platform for sharing ideas, documenting my creative journey, and connecting with others who share similar interests.
+          </p>
+          <p class="text-gray-600 dark:text-gray-400 text-lg">
+            Whether I'm exploring new artistic techniques, reflecting on design trends, or documenting my creative process, my goal is to inspire others and foster meaningful conversations around creativity.
+          </p>
+          <div class="pt-2">
+            <a href="/about" class="btn-outline">
+              Learn more about me
+            </a>
+          </div>
+        </div>
+        
+        <div class="relative">
+          <div class="aspect-[4/3] rounded-2xl overflow-hidden">
+            <img
+              src="https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+              alt="Creative workspace"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <div class="absolute -bottom-6 -right-6 -z-10 aspect-[4/3] w-full rounded-2xl bg-primary-100 dark:bg-primary-900/30"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Newsletter Section -->
+  <section class="py-16 md:py-24 bg-gray-50 dark:bg-gray-900">
+    <div class="container">
+      <NewsletterForm />
+    </div>
+  </section>
+</Layout>
