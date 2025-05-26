@@ -19,8 +19,13 @@ const currentPath = Astro.url.pathname;
 
     <!-- Mobile menu button -->
     <button id="mobile-menu-button" aria-label="Toggle menu" class="p-2 md:hidden z-50">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+      <!-- Menu icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 menu-icon">
         <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+      </svg>
+      <!-- Close icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 close-icon hidden">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
       </svg>
     </button>
 
@@ -62,14 +67,8 @@ const currentPath = Astro.url.pathname;
   
   <!-- Mobile menu -->
   <div id="mobile-menu" class="hidden bg-white dark:bg-gray-950 w-full h-[calc(100vh-4rem)] overflow-y-auto md:hidden">
-    <div class="container px-6 py-8">
-      <button id="mobile-menu-close" aria-label="Close menu" class="sticky top-4 right-4 p-2 float-right">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
-      
-      <nav class="flex-1 flex flex-col justify-center clear-both pt-8">
+    <div class="container px-6 py-8">      
+      <nav class="flex-1 flex flex-col justify-center">
         <ul class="space-y-8 text-center">
           {navItems.map(item => (
             <li>
@@ -113,8 +112,9 @@ const currentPath = Astro.url.pathname;
 
   document.addEventListener('astro:page-load', () => {
     const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenuClose = document.getElementById('mobile-menu-close');
     const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = mobileMenuButton?.querySelector('.menu-icon');
+    const closeIcon = mobileMenuButton?.querySelector('.close-icon');
     const themeToggle = document.getElementById('theme-toggle');
     const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
 
@@ -131,12 +131,18 @@ const currentPath = Astro.url.pathname;
     });
 
     // Mobile menu toggle
+    let isMenuOpen = false;
     mobileMenuButton?.addEventListener('click', () => {
-      menuTl.play();
-    });
-
-    mobileMenuClose?.addEventListener('click', () => {
-      menuTl.reverse();
+      if (isMenuOpen) {
+        menuTl.reverse();
+        menuIcon?.classList.remove('hidden');
+        closeIcon?.classList.add('hidden');
+      } else {
+        menuTl.play();
+        menuIcon?.classList.add('hidden');
+        closeIcon?.classList.remove('hidden');
+      }
+      isMenuOpen = !isMenuOpen;
     });
 
     // Theme toggle function
