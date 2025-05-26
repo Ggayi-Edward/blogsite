@@ -18,7 +18,7 @@ const currentPath = Astro.url.pathname;
     </a>
 
     <!-- Mobile menu button -->
-    <button id="mobile-menu-button" aria-label="Toggle menu" class="p-2 md:hidden">
+    <button id="mobile-menu-button" aria-label="Toggle menu" class="p-2 md:hidden z-50">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
         <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
       </svg>
@@ -61,15 +61,15 @@ const currentPath = Astro.url.pathname;
   </div>
   
   <!-- Mobile menu -->
-  <div id="mobile-menu" class="bg-white dark:bg-gray-950 w-full h-screen md:hidden">
+  <div id="mobile-menu" class="hidden bg-white dark:bg-gray-950 w-full h-[calc(100vh-4rem)] overflow-y-auto md:hidden">
     <div class="container px-6 py-8">
-      <button id="mobile-menu-close" aria-label="Close menu" class="absolute top-4 right-4 p-2">
+      <button id="mobile-menu-close" aria-label="Close menu" class="sticky top-4 right-4 p-2 float-right">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
       
-      <nav class="flex-1 flex flex-col justify-center">
+      <nav class="flex-1 flex flex-col justify-center clear-both pt-8">
         <ul class="space-y-8 text-center">
           {navItems.map(item => (
             <li>
@@ -124,7 +124,7 @@ const currentPath = Astro.url.pathname;
       height: 0,
       display: 'none'
     }, {
-      height: '100vh',
+      height: 'calc(100vh - 4rem)',
       display: 'block',
       duration: 0.3,
       ease: 'power2.out'
@@ -133,12 +133,10 @@ const currentPath = Astro.url.pathname;
     // Mobile menu toggle
     mobileMenuButton?.addEventListener('click', () => {
       menuTl.play();
-      document.body.style.overflow = 'hidden';
     });
 
     mobileMenuClose?.addEventListener('click', () => {
       menuTl.reverse();
-      document.body.style.overflow = '';
     });
 
     // Theme toggle function
