@@ -10,10 +10,10 @@ const navItems = [
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="sticky top-0 z-50 w-full bg-white/80 dark:bg-gray-950/80 backdrop-blur-lg border-b border-gray-200 dark:border-gray-800">
+<header class="sticky top-0 z-50 w-full bg-white/90 dark:bg-gray-950/90 backdrop-blur-lg border-y-2 border-primary-800 dark:border-primary-600">
   <div class="container flex items-center justify-between h-16 md:h-20">
     <!-- Logo -->
-    <a href="/" class="text-base md:text-lg font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600 dark:from-primary-400 dark:to-secondary-400 hover:opacity-80 transition-opacity">
+    <a href="/" class="text-xl md:text-2xl font-sans font-bold tracking-tight text-primary-800 dark:text-primary-400 hover:opacity-80 transition-opacity">
       Modern Blog
     </a>
 
@@ -28,16 +28,16 @@ const currentPath = Astro.url.pathname;
     </button>
 
     <!-- Desktop navigation -->
-    <nav class="hidden md:flex items-center space-x-6">
-      <ul class="flex items-center space-x-6">
+    <nav class="hidden md:flex items-center space-x-8">
+      <ul class="flex items-center space-x-8">
         {navItems.map(item => (
           <li>
             <a 
               href={item.url} 
               class:list={[
-                'relative text-sm font-medium hover:text-primary-600 dark:hover:text-primary-400 transition-colors py-2',
+                'relative text-sm uppercase tracking-widest hover:text-primary-800 dark:hover:text-primary-400 transition-colors py-2',
                 { 
-                  'text-primary-600 dark:text-primary-400 after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary-600 dark:after:bg-primary-400': 
+                  'text-primary-800 dark:text-primary-400 after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary-800 dark:after:bg-primary-400': 
                     currentPath === item.url || (item.url !== '/' && currentPath.startsWith(item.url)) 
                 }
               ]}
@@ -49,7 +49,7 @@ const currentPath = Astro.url.pathname;
       </ul>
 
       <!-- Dark mode toggle -->
-      <button id="theme-toggle" aria-label="Toggle dark mode" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors">
+      <button id="theme-toggle" aria-label="Toggle dark mode" class="p-2 hover:bg-primary-100 dark:hover:bg-primary-800/30 rounded-none border-2 border-transparent hover:border-primary-800 dark:hover:border-primary-600 transition-colors">
         <!-- Sun icon -->
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
@@ -63,7 +63,7 @@ const currentPath = Astro.url.pathname;
   </div>
 
   <!-- Mobile menu -->
-  <div id="mobile-menu" class="hidden bg-white dark:bg-gray-950 w-full h-[calc(100vh-4rem)] overflow-y-auto md:hidden">
+  <div id="mobile-menu" class="hidden bg-white dark:bg-gray-950 w-full h-[calc(100vh-4rem)] overflow-y-auto md:hidden border-t-2 border-primary-800 dark:border-primary-600">
     <div class="container px-6 py-8">
       <nav class="flex-1 flex flex-col justify-center">
         <ul class="space-y-6 text-center">
@@ -72,8 +72,8 @@ const currentPath = Astro.url.pathname;
               <a 
                 href={item.url} 
                 class:list={[
-                  'text-lg font-medium hover:text-primary-600 dark:hover:text-primary-400 transition-colors',
-                  { 'text-primary-600 dark:text-primary-400': currentPath === item.url || (item.url !== '/' && currentPath.startsWith(item.url)) }
+                  'text-lg uppercase tracking-widest hover:text-primary-800 dark:hover:text-primary-400 transition-colors',
+                  { 'text-primary-800 dark:text-primary-400': currentPath === item.url || (item.url !== '/' && currentPath.startsWith(item.url)) }
                 ]}
               >
                 {item.name}
@@ -85,7 +85,7 @@ const currentPath = Astro.url.pathname;
 
       <!-- Mobile dark mode toggle -->
       <div class="mt-8 flex justify-center">
-        <button id="mobile-theme-toggle" aria-label="Toggle dark mode" class="p-2 flex items-center space-x-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors text-sm">
+        <button id="mobile-theme-toggle" aria-label="Toggle dark mode" class="p-2 flex items-center space-x-2 hover:bg-primary-100 dark:hover:bg-primary-800/30 rounded-none border-2 border-transparent hover:border-primary-800 dark:hover:border-primary-600 transition-colors text-sm uppercase tracking-widest">
           <span class="dark:hidden">Dark Mode</span>
           <span class="hidden dark:block">Light Mode</span>
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">

@@ -6,55 +6,58 @@ export default {
     extend: {
       colors: {
         primary: {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          200: '#bae6fd',
-          300: '#7dd3fc',
-          400: '#38bdf8',
-          500: '#0ea5e9',
-          600: '#0284c7',
-          700: '#0369a1',
-          800: '#075985',
-          900: '#0c4a6e',
-          950: '#082f49',
+          50: '#fdf8f6',
+          100: '#f2e8e5',
+          200: '#eaddd7',
+          300: '#e0cec7',
+          400: '#d2bab0',
+          500: '#bfa094',
+          600: '#a18072',
+          700: '#977669',
+          800: '#846358',
+          900: '#43302b',
+          950: '#2c1810',
         },
         secondary: {
-          50: '#f5f3ff',
-          100: '#ede9fe',
-          200: '#ddd6fe',
-          300: '#c4b5fd',
-          400: '#a78bfa',
-          500: '#8b5cf6',
-          600: '#7c3aed',
-          700: '#6d28d9',
-          800: '#5b21b6',
-          900: '#4c1d95',
-          950: '#2e1065',
+          50: '#f8f7f4',
+          100: '#e8e6dd',
+          200: '#d5d0c2',
+          300: '#c0b8a3',
+          400: '#ab9f85',
+          500: '#998b6e',
+          600: '#8c7b5f',
+          700: '#756550',
+          800: '#5d4e3e',
+          900: '#483c30',
+          950: '#2a231c',
         },
         accent: {
-          50: '#fff1f2',
-          100: '#ffe4e6',
-          200: '#fecdd3',
-          300: '#fda4af',
-          400: '#fb7185',
-          500: '#f43f5e',
-          600: '#e11d48',
-          700: '#be123c',
-          800: '#9f1239',
-          900: '#881337',
-          950: '#4c0519',
+          50: '#fbf7f4',
+          100: '#f3e5dd',
+          200: '#e8ccbe',
+          300: '#ddb39e',
+          400: '#d29a7f',
+          500: '#c78160',
+          600: '#b66d4d',
+          700: '#955740',
+          800: '#744333',
+          900: '#573226',
+          950: '#2d1a13',
         }
       },
       fontFamily: {
         sans: [
-          'Inter var, Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
+          'Playfair Display, Georgia, ui-serif, serif'
         ],
         serif: [
-          'Georgia, Cambria, "Times New Roman", Times, serif'
+          'Lora, Georgia, Cambria, "Times New Roman", Times, serif'
         ],
         mono: [
           'JetBrains Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace'
         ]
+      },
+      backgroundImage: {
+        'vintage-texture': "url('https://www.transparenttextures.com/patterns/paper-fibers.png')"
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',
