@@ -14,5 +14,9 @@ export default defineConfig({
       theme: 'dracula',
       wrap: true
     }
+  },
+  server: {
+    host: true,
+    port: 4321
   }
 });
