@@ -71,20 +71,33 @@ const {
     <Navigation />
 
     <main class="relative flex-grow overflow-hidden">
-      <!-- Decorative Blurred Background Flowers -->
-      <img src="/flower1.jpg" class="absolute top-10 left-10 w-40 opacity-20 blur-md pointer-events-none" alt="flower1" />
-      <img src="/flower2.jpg" class="absolute top-1/4 right-20 w-52 opacity-15 blur-md rotate-12 pointer-events-none" alt="flower2" />
-      <img src="/flower3.jpg" class="absolute top-1/2 left-1/3 w-44 opacity-20 blur-md -rotate-6 pointer-events-none" alt="flower3" />
-      <img src="/flower4.jpg" class="absolute bottom-40 right-10 w-36 opacity-15 blur-md pointer-events-none" alt="flower4" />
-      <img src="/flower5.jpg" class="absolute bottom-20 left-20 w-48 opacity-10 blur-md pointer-events-none" alt="flower5" />
-      <img src="/flower6.jpg" class="absolute bottom-10 right-1/4 w-40 opacity-15 blur-md rotate-3 pointer-events-none" alt="flower6" />
+      <!-- Enhanced Decorative Blurred Background Flowers -->
+      <div class="absolute inset-0 pointer-events-none">
+        <!-- Large atmospheric flowers with heavy blur -->
+        <img src="/flower1.jpg" class="absolute top-10 left-10 w-48 opacity-12 blur-[20px] transform scale-110 pointer-events-none animate-float-slow" alt="flower1" />
+        <img src="/flower2.jpg" class="absolute top-1/4 right-20 w-60 opacity-8 blur-[25px] rotate-[15deg] transform scale-125 pointer-events-none animate-float-slow-reverse" alt="flower2" />
+        <img src="/flower3.jpg" class="absolute top-1/2 left-1/3 w-52 opacity-10 blur-[22px] -rotate-[8deg] transform scale-115 pointer-events-none animate-float-medium" alt="flower3" />
+        <img src="/flower4.jpg" class="absolute bottom-40 right-10 w-44 opacity-7 blur-[18px] rotate-[5deg] transform scale-105 pointer-events-none animate-float-slow" alt="flower4" />
+        <img src="/flower5.jpg" class="absolute bottom-20 left-20 w-56 opacity-6 blur-[28px] rotate-[-3deg] transform scale-120 pointer-events-none animate-float-medium-reverse" alt="flower5" />
+        <img src="/flower6.jpg" class="absolute bottom-10 right-1/4 w-48 opacity-9 blur-[20px] rotate-[7deg] transform scale-110 pointer-events-none animate-float-slow" alt="flower6" />
+        
+        <!-- Additional atmospheric elements -->
+        <div class="absolute top-16 right-1/3 w-40 h-40 bg-gradient-to-br from-rose-200/10 to-pink-300/10 rounded-full blur-[30px] animate-float-slow"></div>
+        <div class="absolute bottom-32 left-1/4 w-32 h-32 bg-gradient-to-br from-purple-200/8 to-rose-200/8 rounded-full blur-[25px] animate-float-medium"></div>
+        <div class="absolute top-1/3 left-1/2 w-36 h-36 bg-gradient-to-br from-pink-100/12 to-rose-100/12 rounded-full blur-[35px] animate-float-slow-reverse"></div>
+      </div>
 
-      <!-- Corner Flowers -->
-      <img src="/flower-corner-top-left.jpg" alt="flower corner" class="absolute top-0 left-0 w-24 h-24 pointer-events-none opacity-70" />
-      <img src="/flower-corner-bottom-right.jpg" alt="flower corner" class="absolute bottom-0 right-0 w-24 h-24 pointer-events-none opacity-70" />
+      <!-- Enhanced Corner Flowers with better blend -->
+      <img src="/flower-corner-top-left.jpg" alt="flower corner" class="absolute top-0 left-0 w-28 h-28 pointer-events-none opacity-50 blur-[2px] mix-blend-multiply dark:mix-blend-screen" />
+      <img src="/flower-corner-bottom-right.jpg" alt="flower corner" class="absolute bottom-0 right-0 w-28 h-28 pointer-events-none opacity-50 blur-[2px] mix-blend-multiply dark:mix-blend-screen rotate-180" />
+
+      <!-- Overlay gradient for better content readability -->
+      <div class="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-rose-50/10 dark:from-gray-950/30 dark:via-transparent dark:to-gray-900/20 pointer-events-none"></div>
 
       <!-- Main Content Slot -->
-      <slot />
+      <div class="relative z-10">
+        <slot />
+      </div>
     </main>
 
     <Footer />
@@ -106,19 +119,19 @@ const {
     }
 
     h1 {
-      @apply text-4xl md:text-5xl text-rose-800;
+      @apply text-4xl md:text-5xl text-rose-800 dark:text-rose-300;
     }
 
     h2 {
-      @apply text-3xl md:text-4xl text-rose-700;
+      @apply text-3xl md:text-4xl text-rose-700 dark:text-rose-400;
     }
 
     h3 {
-      @apply text-2xl md:text-3xl text-rose-600;
+      @apply text-2xl md:text-3xl text-rose-600 dark:text-rose-500;
     }
 
     h4 {
-      @apply text-xl md:text-2xl text-rose-500;
+      @apply text-xl md:text-2xl text-rose-500 dark:text-rose-600;
     }
 
     p {
@@ -162,6 +175,107 @@ const {
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
+      background-attachment: fixed;
+    }
+
+    /* Custom blur utilities for enhanced effects */
+    .blur-\[18px\] {
+      filter: blur(18px);
+    }
+    
+    .blur-\[20px\] {
+      filter: blur(20px);
+    }
+    
+    .blur-\[22px\] {
+      filter: blur(22px);
+    }
+    
+    .blur-\[25px\] {
+      filter: blur(25px);
+    }
+    
+    .blur-\[28px\] {
+      filter: blur(28px);
+    }
+    
+    .blur-\[30px\] {
+      filter: blur(30px);
+    }
+    
+    .blur-\[35px\] {
+      filter: blur(35px);
+    }
+
+    /* Subtle floating animations for background elements */
+    @keyframes float-slow {
+      0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+      25% {
+        transform: translateY(-3px) rotate(0.5deg);
+      }
+      50% {
+        transform: translateY(-2px) rotate(-0.5deg);
+      }
+      75% {
+        transform: translateY(-4px) rotate(0.3deg);
+      }
+    }
+
+    @keyframes float-medium {
+      0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+      33% {
+        transform: translateY(-2px) rotate(-0.3deg);
+      }
+      66% {
+        transform: translateY(-5px) rotate(0.4deg);
+      }
+    }
+
+    @keyframes float-slow-reverse {
+      0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+      25% {
+        transform: translateY(4px) rotate(-0.5deg);
+      }
+      50% {
+        transform: translateY(2px) rotate(0.5deg);
+      }
+      75% {
+        transform: translateY(3px) rotate(-0.3deg);
+      }
+    }
+
+    @keyframes float-medium-reverse {
+      0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+      33% {
+        transform: translateY(5px) rotate(0.3deg);
+      }
+      66% {
+        transform: translateY(2px) rotate(-0.4deg);
+      }
+    }
+
+    .animate-float-slow {
+      animation: float-slow 12s ease-in-out infinite;
+    }
+
+    .animate-float-medium {
+      animation: float-medium 8s ease-in-out infinite;
+    }
+
+    .animate-float-slow-reverse {
+      animation: float-slow-reverse 15s ease-in-out infinite;
+    }
+
+    .animate-float-medium-reverse {
+      animation: float-medium-reverse 10s ease-in-out infinite;
     }
   }
 </style>
